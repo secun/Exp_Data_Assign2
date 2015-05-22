@@ -12,11 +12,12 @@ ColNames = names(NEI)
 NEI_bal <- unique(subset(NEI, fips == "24510", ColNames))
 
 
-# New data frame with the sum  (formatted for clarity)  of each year
+# New data frame with the sum of each year
 NEI_q2 <- aggregate(Emissions ~ year, data = NEI_bal, FUN = sum)
 
+
 #Plot million by year in Baltimore
-plot(NEI_q2$year, NEI_q2$Emissions_f, type = "n", 
+plot(NEI_q2$year, NEI_q2$Emissions, type = "n", 
      xlab = "Year", ylab ="PM2.5 Emissions(Tons)", 
      ylim = c(0, max(NEI_q2$Emissions)))
 lines(NEI_q2$year, NEI_q2$Emissions, lwd = 2, col = "red")
